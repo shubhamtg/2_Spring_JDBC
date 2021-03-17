@@ -2,6 +2,7 @@ package com.springjdbc._Spring_JDBC.Dao;
 
 import java.sql.Types;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -58,6 +59,13 @@ public class EmployeeDao implements EmployeeRepo {
 		jdbctemp.update(sql, new Object[] {name,id});
 		return "Employee updated";
 		
+	}
+
+	@Override
+	public List<Map<String, Object>> getCombineData() {
+		String sql = "select a.id,a.name,a.salary,b.name as dept_name from emp a, department b where a.dept_id = b.id";
+		List<Map<String,Object>> ls = jdbctemp.queryForList(sql);
+		return ls;
 	}
 
 

@@ -1,6 +1,7 @@
 package com.springjdbc._Spring_JDBC.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -54,6 +55,11 @@ public class EmpController {
 		//return employeedao.updateData(id,name,salary);
 		return employeedao.updateData(id,name);
 		//System.out.println("Updated Record with ID = " + id );
+	}
+	
+	@GetMapping("/combinedata")
+	public List<Map<String,Object>> getCombineData(){
+		return employeedao.getCombineData();
 	}
 
 }
